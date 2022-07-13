@@ -1,0 +1,824 @@
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	overflow-x: hidden;
+	line-height: 1;
+	font-family: Helvetica;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+a{
+	&:hover{text-decoration: none;color: maroon;}
+}
+html,body{scroll-behavior: smooth;}
+$white:white;
+$black: black;
+$grey :grey;
+$border:1px solid grey;
+$Border:1px solid white;
+section{margin-top: 100px;}
+h1{font-size: 72px;font-family: 'Regular';line-height: 98px;}
+h2{font-size: 36px;font-family:'Regular';line-height: 49px;}
+h3{font-size: 30px;font-family: 'Regular';line-height: 41px;}
+p{font-size: 20px;font-family:'Regular';line-height: 36px;}
+h5{font-size: 26px;font-family:'Regular';line-height:36px ;}
+a{font-size: 26px;font-family:'Ultra-light';text-decoration: none;color: $black;line-height: 36px;}
+@mixin flex-wrap {display: flex;flex-wrap: wrap;justify-content: space-around;}
+@mixin flex {display: flex;justify-content: center;align-items: center;}
+@mixin flex-end {display:flex; align-items: flex-end;justify-content: flex-end;}
+
+// .btn{font-size:16px;color: grey;border: 1px solid grey;width: 50%;margin: 0 auto;;}
+// .about-icon{width: 70px;border: .5px solid grey;margin: 0 auto;}
+
+// // header{background-color: red;text-align: center;position: fixed;width: 100%;z-index: 10;height: 10vh;
+// // 	nav{position: absolute;text-align: left;top: 100%;left: 0;
+// // 	  ul{margin: 0;padding: 0;list-style: none;
+// // 		li{margin: 15% ;
+// // 			a{color: yellow;text-decoration: none;font-size: 12px;text-transform: uppercase;}
+// // 		}
+// // 	}}
+// // }
+// start navbar
+.header{height: 100px;background-color:$white;padding:0 60px;
+	>h5{line-height: 100px;float: left;font-family: 'Ultra-light';}
+	>input{position: absolute;visibility: hidden;z-index: -1111;}
+    >ul{float:right;line-height: 100px;
+	   >a{color:$black;padding:0 15px;transition:0.4s;font-family: 'Regular';
+		  &:hover{color: maroon;text-decoration: none;}
+		}
+		.donate-btn{border: $border;width: 126px;height: 36px;}
+  }
+	.show-menu-btn, .hide-menu-btn{transition:0.4s;font-size: 30px;cursor: pointer;display: none;
+	   &:hover{color: $grey;}}
+	.show-menu-btn{float: right;line-height: 100px;}
+}
+
+// end navbar
+//start billboard
+.billboard{background-image: url("./images/hero-image.png");background-position:-50px center;background-size: cover;background-repeat: no-repeat;@include flex-end();height: 90vh;
+	.billboard-inner{margin: 0 165px 100px 0;color: $white;
+		>p{font-size: 36px;line-height: 49px;}
+		>a{color: $white;border:$Border;display: block;width: 190px;height: 50px;line-height: 36px;margin-top: 19px;@include flex();
+		 &:hover{color: maroon;}}
+	}
+}
+// start about
+.about{text-align: center;
+	.promise {
+		&::after{content:'';display: flex;background: lightblue;width: 10%;height: 2px;margin:13px auto 27px}}
+	 >p{padding: 0 185px 50px;}
+	 >div{@include flex-wrap();margin-top: 40px;padding: 0 5%;
+		>div{width: 292px;height:293px;margin-bottom: 41px;overflow:hidden;
+			>div:first-child{@include flex();flex-direction: column;justify-content: space-evenly;height: 100%;
+				>img{height: 85px;}
+				>a{&::after{content:'';display: flex;background:rgba(128, 128, 128, 0.938);width: 55%;height: 1px;margin:7px auto 20px}}
+			}
+			>div:last-child{position: absolute; top:100%;bottom: 0; left: 0;right: 0;opacity:0;@include flex();flex-direction: column;transition: .5s ease all;
+				>h5{
+					&:after{content:'';display: flex;background:rgba(128, 128, 128, 0.938);width: 55%;height: 1px;margin:9px auto 0}
+				}
+				 >p{font-size: 16px;padding: 15px;line-height: 26px;color: $grey;}
+				 >a{border:$border;
+			     	&:hover{color:$white;background-color:rgba(0, 0, 0, 0.719);}}
+			}
+		}
+		>div:hover >div:last-child{top:0;opacity: 1;}
+		>div:hover >div:first-child{opacity: 0;transition: .5s ease all;}
+		}
+	}
+// start story
+.story{
+     .story-inner1{margin-top: 40px;
+		>div:first-child{border:1px solid rgba(128, 128, 128, 0.459);text-align: center;
+			>h1{font-family: 'Ultra-light';padding: 15px 0;}
+			>p{line-height: 27px;}
+		}
+		>div:last-child{
+			>div{position: absolute;bottom: 0;@include flex();background-color: rgba(0, 0, 0, 0.61);width: 100%;color: $white;justify-content: space-evenly;
+				>p{line-height: 60px;}
+				>a{color: $white;background-color: rgba(0, 0, 0, 0.568);padding: 5px 15px;border-radius: 8px;
+					&:hover{background-color: $white;color: $black;}
+				}
+	    	}
+		 }
+	}
+	.story-inner2{margin-top: 166px;border: $border;padding: 100px 27px 56px 74px;position: relative;
+		>h2{margin: 0 auto;position: absolute;border: 1px solid grey;width: 467px;height: 99px;@include flex();top: -10%;background-color: $white;margin: 0 270px;}
+		>div >h3{padding-bottom: 31px;}
+		.inner1 >p{border-right: 1px solid grey;padding-right: 22px;}
+		>div >p >a{font-size: 20px;font-family: 'Reguler';text-decoration: underline;}
+	}
+
+}
+// start activities
+.activity{
+	>div{margin: 40px 0 50px 0;
+		>div{
+			>img{width: 313px;height:250px;max-width: 100%;object-fit: cover;}
+			>p{line-height: 30px;}
+			.inner-p{padding-bottom: 15px;}
+			>a{font-family:'Regular';font-size: 20px;}
+		}
+	}
+}
+// start video
+.video{
+	>div{
+		>img{height: 575px;width: 100%;object-fit: cover;}
+	}
+}
+// start opportunities
+.visity{
+	>h2{font-family: 'Ultra-light';}
+	>div{
+		>div{padding:0 30px;
+			>h3{margin: 39px;text-align: center;}
+			>div{position: relative;overflow: hidden;
+				>img{width:556px;height: 370px;max-width: 100%;object-fit: cover;}
+				.overlay{position: absolute;top: 100%;bottom: 0;width: 100%;background-color: rgba(0, 0, 0, 0.829);opacity: 0;color: $white;
+				>h3{line-height: 45px;}
+				>a{border: 1px solid $white;color: $white;padding: 10px 41px;
+				  &:hover{color: maroon;}}
+				 }
+			 }
+			 >div:hover .overlay{opacity: 1;top: 0;display: flex;justify-content: space-evenly;align-items: center;flex-direction: column;text-align: center;transition: .3s ease all}
+		}
+	}
+}
+// start sponsor
+.sponsor-home{
+	.sponsor{display: flex;justify-content: space-between;line-height: 30px;
+		>div:first-child >h2{margin-bottom: 12px;}
+	    >div:last-child{
+	    	>a{font-family: 'Regular';
+				&::after{content: '';display: flex;background: black;width: 100%;height: 1px;margin: 5px 0 22px;}
+				>img{width: 47px;}
+				>span{margin-right: 15px;}
+			 }
+			 .general{margin-right: 27px;}
+	     }
+	 }
+	 .sponsor-one{display: flex;justify-content: space-evenly;margin-top: 90px;flex-wrap: wrap;align-items: center;
+		>div{text-align: center;justify-content: space-evenly;padding: 15px;width: 250px;
+			>img{object-fit: contain;height: 95px;}
+		}
+		.child1{height: 280px;}
+		.child2{height: 340px;
+			>img{height: 120px;}
+		}
+		.child3{height: 400px;
+			>img{height: 150px;}
+		}
+		.child4{height: 460px;
+		    >img{height: 180px;}}
+	}
+}
+// start latest news
+.latest-news{
+	>div{
+		>div:first-child >h2{padding:0 195px 40px 0;}
+		>div:last-child{display: flex;flex-direction: column;align-items: flex-end;justify-content: space-between;
+			>a{border: $border;height: 45px;text-align: center;width: 250px;margin-bottom: 50px;@include flex();}
+			>div{display: flex;align-items: center;padding:0 0 0 15px;
+				>img{width: 129px;height: 100px;margin: 0 52px;}
+				&::before{content:'';background:grey;width: 1px;height: 60px;}
+			}
+		}
+	}
+}
+// start donate
+.donate{
+	>div:first-child{text-align: right;
+		>h5{font-family: 'Ultra-light';line-height: 60px;}
+	}
+	>div:nth-child(2){display: flex;justify-content: space-between;margin: 110px 0;
+		>a{display: flex;width: 384px;height: 100px;border: $border;align-items: center;justify-content: space-evenly;
+			>img{width: 76px;height: 50px;}
+		}
+	}
+	>div:last-child{
+		>h2{margin-bottom: 95px;text-align: center;}
+		>div{@include flex();justify-content: space-around;margin-bottom: 48px;flex-wrap: wrap;
+			>img{margin: 0 90px 80px; }
+		}
+		.australian-aid{width: 170px;height: 75px;}
+		.US-Embassy{width: 100px;height: 102px;}
+		.finnish-embassy{width: 240px;height: 117;}
+	}
+	&::after{content:'';display: flex;background:rgba(128, 128, 128, 0.733);width: 70%;height: 1px;margin:120px auto;}
+}
+// start footer
+.footer{display: flex;justify-content: space-between;
+	>div{width: 150px;line-height: 25px;margin-bottom: 15px;
+	>h5{margin-bottom: 5px;}
+	>a{font-family: 'Regular';font-size: 16px;line-height: 22px;}
+    }
+}
+
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+section{margin-top: 60px;}
+h1{font-size: 45px;line-height:40px}
+h2{font-size: 25px;line-height: 49px;}
+h3{font-size: 23px;line-height: 41px;}
+h5{font-size: 20px;line-height:30px ;}
+p{font-size:  15px;line-height: 27px;}
+a{font-size:  20px;line-height: 36px;}
+// start navbar
+.header{padding: 0 25px;
+	>input:checked ~ .menu{right: 0;z-index: 123;}
+    >ul{position:fixed;width: 100%;height: 78vh;background-color: black;right:-100% ;top: 0;text-align: center;padding: 80px 0;line-height: normal;transition: 0.7s;
+	   >a{display: block;padding: 20px;color: $white;
+		&:hover{color: maroon;}
+	}
+	.donate-btn{margin: 0 auto;padding: 5px;width: 150px;height: 50px;}
+	}
+	.show-menu-btn, .hide-menu-btn{display: block;}
+    .hide-menu-btn{position: absolute;top: 30px;right: 20px;color: $white;}
+}
+//start billboard
+.billboard{height: 60vh;justify-content: center;
+	.billboard-inner{margin:0 0 50px 0;text-align: center;
+		>p{font-size:25px;}
+		>a{width:150px;height: 40px;margin: 0 auto;}
+	}
+}
+// start about
+.about{
+	.promise {
+		&::after{width: 20%;margin:6px auto 10px}}
+	 >p{padding: 20px 0}
+	 >div{margin-top: 20px;}
+	}
+// story
+.story{
+	.story-inner1{margin-top: 20px;padding: 0 15px;
+		>div:first-child{padding: 15px;
+			>h1{line-height: 30px;padding: 8px 0;}
+			>p{line-height: 20px;}
+		}
+	}
+
+.story-inner2{margin-top: 50px;border:none;padding:30px 5px;position: relative;
+	>h2{border:none;width: 270px;top: 0;margin: 0;height: 30px;}
+	>div >h3{padding: 25px 0 10px 0;}
+	.inner1 >p{border-right:none;padding-right:0;}
+	>div >p >a{font-size: 18px;}
+
+	}
+  }
+  // start activities
+.activity{
+	>div{margin: 20px 0 50px 0;
+		>div:first-child{display: none;}
+		>div{
+			>img{width: 380px;}
+		}
+	}
+}
+// video
+.video{
+	>div{
+		>img{height: 200px;}
+	}
+}
+// start opportunities
+.visity{
+	>div{
+		>div:first-child{display: none;}
+		>div{padding:0 15px;
+			>h3{margin: 15px;}
+			>div{
+				>img{height: 240px;}
+				.overlay{
+				>a{padding: 5px 20px;}
+				 }
+			 }
+		}
+	}
+}
+// start sponsor
+.sponsor-home{
+	.sponsor{flex-direction: column;
+		>div:first-child {margin-bottom: 30px;
+		>h2{margin-bottom: 5px;font-size: 21px;}
+		>h5{font-size: 17px;}
+	    }
+	    >div:last-child{
+	    	>a{font-size: 16px;
+				>span{margin-right: 20px;;}
+			 }
+	     }
+	 }
+	 .sponsor-one{margin-top: 30px;
+		>div{width: 350px;}
+		.child1 ,.child2 ,.child3 ,.child4{height: 350px;margin: 15px 0;}
+	}
+}
+// latest news
+.latest-news{
+	>div{
+		>div:first-child >h2{padding:0 0 15px;line-height: 35px;text-align: center;}
+		>div:last-child{align-items:inherit;
+			>a{margin: 20px 0;}
+			>div{padding:5px 0;
+				>img{margin: 0 15px 0 0;width: 120px;height: 80px;}
+				>div {
+				>h5{font-size: 19px;}
+				>p{line-height: 16px;font-size: 14px;}
+			}
+			&::before{content:none;width:0;height:0;}
+			}
+		}
+	}
+}
+// donate
+.donate{
+	>div:first-child{
+		>h2{line-height: 30px;text-align: center;}
+		>h5{font-size: 20px;line-height: 40px;}
+	}
+	>div:nth-child(2){flex-direction: column;margin: 30px 0;
+		>a{margin: 10px auto;height: 70px;width: 300px;justify-content: space-between;padding: 20px;
+		>h5{font-size: 16px;}
+		>img{width: 60px;}
+	   }
+	}
+	>div:last-child{
+		>h2{line-height: 30px;margin-bottom: 40px;}
+		>div{margin-bottom: 0;
+			>img{margin: 20px 25px;}
+		}
+	     .australian-aid{width: 110px;height: 53px;object-fit: contain;}
+	     .US-Embassy{width: 60px;height: 80px;object-fit: contain;}
+	     .finnish-embassy{width: 120px;height: 95px;object-fit: contain;}
+}
+
+&::after{margin:10px auto;}
+
+}
+// start footer
+.footer{flex-flow: wrap-reverse;
+	>div{margin: 10px auto;}
+}
+
+}
+// Small devices (landscape phones, 576px and up 767)
+@media (min-width: 568px) and (max-width: 767px) {
+section{margin-top: 40px;}
+h1{font-size: 45px;line-height:40px}
+h2{font-size: 26px;line-height: 49px;}
+h3{font-size: 21px;line-height: 41px;}
+h5{font-size: 22px;line-height:36px ;}
+p{font-size:  15px;line-height: 27px;}
+a{font-size:  20px;line-height: 36px;}
+// start navbar
+.header{
+	>input:checked ~ .menu{right: 0;z-index: 123;}
+    >ul{position: fixed;width: 100%;height: 100vh;background-color: black;right:-100% ;top: 0;text-align: center;padding: 80px 0;line-height: normal;transition: 0.7s;
+	   >a{display: block;padding: 10px;color: $white;
+		&:hover{color: maroon;}
+	}
+	.donate-btn{margin: 0 auto;padding: 5px;width: 150px;height: 50px;}
+	}
+	.show-menu-btn, .hide-menu-btn{display: block;}
+    .hide-menu-btn{position: absolute;top: 30px;right: 20px;color: $white;}
+}
+//start billboard
+.billboard{height: 80vh;background-position: 0 center;
+	.billboard-inner{margin:0 60px 40px 0;text-align: center;
+		>p{font-size:25px;}
+		>a{width:150px;height: 40px;margin: 10px auto;}
+	}
+}
+// start about
+.about{
+	.promise {
+		&::after{width: 20%;margin:6px auto 10px}}
+	 >p{padding: 0 0 20px 0}
+	 >div{margin-top: 20px;
+	 >div{width: 190px;height: 230px;;
+		>div:last-child >p{padding: 15px 0;}
+		}
+	}
+}
+// story
+.story{
+	.story-inner1{margin-top: 20px;
+		>div:first-child{padding: 20px;
+			>h1{line-height: 30px;padding: 10px 0;}
+			>p{line-height: 25px;}
+		}
+	}
+	.story-inner2{margin-top: 40px;border:none;padding:25px 5px;position: relative;
+		>h2{border:none;width: 270px;top: 0;margin: 0;height: 30px;}
+		>div >h3{padding: 25px 0 10px 0;}
+		.inner1 >p{border-right:none;padding-right:0;}
+		}
+}
+// start activities
+.activity{
+	>h2{margin: 0 10px;}
+	>div{margin: 20px 0;
+		.activity-inner{width: 50%;
+			>img{height: 190px;}
+		}
+	}
+
+}
+//video 
+.video{
+	>div{
+		>img{height: 240px;}
+	}
+}
+// start opportunities
+.visity{
+	>div{
+		>div{padding:0 15px;
+			>h3{margin: 10px;}
+			>div{
+				>img{height: 270px;}
+				.overlay{
+				>a{padding: 5px 20px;}
+				 }
+			 }
+		}
+	}
+}
+// start sponsor
+.sponsor-home{
+	.sponsor{flex-direction: column;
+		>div:first-child {margin-bottom: 30px;
+		>h2{margin-bottom: 5px;font-size: 24px;}
+		>h5{font-size: 20px;}
+	    }
+	    >div:last-child{
+	    	>a{
+				>span{margin-right: 100px;}
+				&::after{width: 90%;}
+			 }
+			 .general{margin-right: 110px;}
+	     }
+	 }
+	 .sponsor-one{margin-top: 30px;
+		>div{width: 235px;}
+		.child1 ,.child2 ,.child3 ,.child4{height: 280px;margin: 10px;}
+	}
+}
+// latest news
+.latest-news{
+	>div{
+		>div:first-child >h2{padding:0 0 15px ;line-height: 35px;}
+		>div:last-child{align-items:inherit;
+			>a{margin: 20px 0;}
+			>div{padding:15px 0;
+				>img{margin: 0 30px 0 0;width: 125px;height: 85px;}
+				>div {
+				>h5{font-size: 22px;}
+				>p{line-height: 22px;}
+			}
+			&::before{content:none;width:0;height:0;}
+			}
+		}
+	}
+}
+// start donate
+.donate{
+	>div:first-child{text-align: center;	
+		>h2{font-size: 26px;}
+		>h5{font-size: 20px;line-height: 40px;}
+	}
+	>div:nth-child(2){margin: 60px 0;
+		>a{height: 60px;
+			>img{width: 50px;height: 30px;}
+			>h5{font-size: 12px;line-height: 20px;}
+		}
+	}
+	>div:last-child{
+		>h2{line-height: 30px;margin-bottom: 40px;}
+		>div{margin-bottom: 0;
+			>img{margin: 20px 50px;}
+		}
+	     .australian-aid{width: 110px;height: 53px;object-fit: contain;}
+	     .US-Embassy{width: 60px;height: 80px;object-fit: contain;}
+	     .finnish-embassy{width: 120px;height: 95px;object-fit: contain;}
+}
+	&::after{margin:20px auto;}
+
+}
+// start footer
+.footer{flex-flow: wrap-reverse;
+	>div{margin: 10px auto;}
+}
+
+}
+
+
+
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) { 
+	section{margin-top: 40px;}
+	h2{font-size: 35px;}
+	h3{font-size: 30px;}
+	p{line-height: 30px;}
+// start navbar
+.header{
+	>input:checked ~ .menu{right: 0;z-index: 123;}
+    >ul{position: fixed;width: 100%;height: 70vh;background-color: black;right:-100% ;top: 0;text-align: center;padding: 80px 0;line-height: normal;transition: 0.7s;
+	   >a{display: block;padding: 40px;color: $white;
+		&:hover{color: maroon;}
+	}
+	.donate-btn{margin: 0 auto;padding: 5px;width: 150px;height: 50px;}
+	}
+	.show-menu-btn, .hide-menu-btn{display: block;}
+    .hide-menu-btn{position: absolute;top: 30px;right: 50px;color: $white;}
+}
+.billboard{height: 60vh;background-position: 0 center;
+		.billboard-inner{text-align: center;
+			>p{font-size:35px;}
+			>a{width:180px;height: 50px;margin: 10px auto;}
+		}
+	}
+// start about
+.about > p {padding: 0 85px 50px;}
+.about > div > div {width: 270px;}
+// story
+.story{
+
+	.story-inner1{flex-direction: column;
+		>div{max-width: 100%;}
+		>div:first-child{padding: 30px;
+			>h1{line-height: 60px;padding: 8px 0;}
+		}
+	}
+	.story-inner2{margin-top: 60px;padding:25px 0;position: relative;border: none;
+		>div{flex: 0 0 100%;max-width: 100%;}
+		>h2{border:none;width:100%;top: 0;margin: 0 auto;height:20px;position: relative;}
+		>div >h3{padding: 30px 0;}
+		.inner1 >p{border-right:none;padding-right:0;}
+		}
+  }
+// start activity
+  .activity{
+	>h2{margin: 0 10px;}
+	>div{margin: 20px 0;
+		.activity-inner{flex: 0 0 50%;max-width: 50%;}
+			>div:last-child{max-width: 100%;flex: 0 0 100%;margin: 15px 0;}
+		}
+	}
+// video
+	.video{
+		>div{
+			>img{height: 340px;}
+		}
+	}
+// start opportunities
+.visity{
+	>div{
+		>div{padding:0 15px;
+			>h3{margin: 9px;font-size: 25px;}
+			>div{
+				>img{height: 300px;}
+				.overlay{
+				>a{padding: 5px 20px;}
+				 }
+			 }
+		}
+	}
+}	
+// start sponsor
+.sponsor-home{
+	.sponsor{flex-direction: column;
+		>div:first-child {margin-bottom: 30px;
+		>h2{margin-bottom: 5px;font-size: 30px;}
+		>h5{font-size: 24px;}
+	    }
+	    >div:last-child{
+	    	>a{
+				>span{margin-right: 100px;}
+				&::after{width: 90%;}
+			 }
+			 .general{margin-right: 110px;}
+	     }
+	 }
+	 .sponsor-one{margin-top: 30px;
+		>div{width: 300px;}
+		.child1 ,.child2 ,.child3 ,.child4{height: 350px;margin: 20px;}
+	}
+}
+// latest news
+// latest news
+.latest-news{
+	>div{
+		>div:first-child {flex: 0 0 100%;max-width: 100%;text-align: center;
+			>h2{padding:0 0 30px 0;}
+			>img{width: 690px;}
+		}
+		>div:last-child{align-items:inherit;flex: 0 0 100%;max-width: 100%;
+			>a{margin: 30px 0;height: 55px;}
+			>div{padding:15px 0;
+				>img{margin: 0 30px 0 0;width: 200px;height: 100px;object-fit: cover;}
+				>div {
+				>h5{font-size: 30px;}
+			}
+			&::before{content:none;width:0;height:0;}
+			}
+		}
+	}
+}
+// start donate
+.donate{
+	>div:first-child >h2{font-size: 36px;}
+	>div:nth-child(2){margin: 80px 0;flex-wrap: wrap;
+		>a{height: 120px;margin: 10px auto;width: 600px;justify-content: space-between;padding: 40px;
+			>img{width: 80px;height: 70px;}
+			>h5{font-size: 28px;line-height: 22px;}
+		}
+	}
+	>div:last-child{
+		>h2{margin-bottom: 80px;font-size: 35px;}
+		>div{
+			>img{margin: 0 50px 70px; }
+		}
+	}
+	&::after{margin:30px auto;}
+
+}
+// footer
+.footer{flex-wrap: wrap;
+   >div{margin: 0 2px 15px;width: 170px;}}
+
+}
+
+
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+h1{font-size: 60px;line-height:70px;}
+h2{font-size: 35px;}
+h3{font-size: 27px;}
+p{line-height: 30px;}
+// billboard
+.billboard {
+	.billboard-inner{margin: 0 30px 100px 0;
+		> p{ font-size: 30px;}
+	}
+}
+// start about
+.about > p {padding: 0 95px;}
+.about > div > div {margin-bottom: 50px;width: 350px;height: 330px;}
+// story
+.story{
+	.story-inner1{
+		>div:first-child{padding:6px 15px;
+			>h1{line-height: 58px;}
+			>p{line-height: 24px;font-size: 19px;}
+		}
+	}
+	.story-inner2{margin-top: 90px;padding:80px 5px 30px 5px;position: relative;
+		>h2{width: 360px;top: -7%;margin: 0 295px;height: 85px;}
+		>div >h3{padding: 15px 0;}
+		.inner1 >p{border-right:none;padding-right:0;}
+		}
+}
+// start activity
+.activity{
+	>div{
+		>div:last-child{
+		  >h2{font-size: 30px;line-height: 40px;}
+		  >p{font-size: 18px;}}
+		}
+	}
+// video
+	.video{
+		>div{
+			>img{height: 440px;}
+		}
+	}
+// start sponsor
+.sponsor-home{
+	.sponsor{
+		>div:first-child {margin-bottom: 30px;
+		>h2{font-size: 29px;}
+		>h5{font-size: 24px;}
+	    }
+	    >div:last-child{
+	    	>a{
+				>span{margin-right:45px;font-size: 23px;}
+				&::after{width: 100%;}
+			 }
+			 .general{margin-right: 58px;font-size: 23px;}
+	     }
+	 }
+	 .sponsor-one{margin-top: 60px;
+		>div{width: 200px;}
+			.child1{height: 250px;}
+	     	.child2{height: 350px;}
+	  	    .child3{height: 450px;}
+	    	.child4{height: 550px;}
+		}
+	}
+// latest news
+	.latest-news{
+		>div{
+			>div:first-child >h2{padding: 0 160px 15px 0;font-size: 30px;}
+			>div:last-child{
+				>a{margin: 25px 0;}
+				>div{padding:10px 0;
+					>img{margin: 0 30px 0 0;width: 125px;height: 85px;}
+					>div {
+					>h5{font-size: 25px;}
+				}
+				&::before{content:none;width:0;height:0;}
+				}
+			}
+		}
+	}
+	.donate{
+		>div:last-child{
+			>h2{margin-bottom: 80px;font-size: 35px;}
+			>div{
+				>img{margin: 50px 40px 0; }
+			}
+		}
+	}
+	
+}
+
+
+
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
+
+
+// .center, .content{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+// .center{
+// 	>input{display: none;}
+// 	#click:checked ~ .content{opacity: 1;visibility: visible;}
+// 	>label{display: block;width: 160px;height: 50px;background-color: red;color: blue;text-align: center;line-height: 50px;border-radius: 3px;cursor: pointer;
+// 	&:hover{background-color: greenyellow;}}
+// 	.content{width: 400px;height: 350px;background-color: white;opacity: 0;visibility: hidden;;
+// 		.close-btn{position: absolute;bottom: 12px;border: 1px solid green;padding: 8px 15px;cursor: pointer;right: 25px;}
+// 		.headr{height: 68px;overflow: hidden;background-color: green;
+// 			>h2{color: white;padding-left: 32px;}
+// 			.fa-times{position: absolute;right: 20px;top: 20px;color: white;cursor: pointer;}
+// 		}
+// 	}
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
